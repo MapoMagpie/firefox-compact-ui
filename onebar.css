@@ -1,0 +1,84 @@
+:root{
+    --globle-height: 33px !important
+}
+
+:root[uidensity="compact"] {
+    --tab-min-height: var(--globle-height) !important;
+}
+
+:root[uidensity="compact"] #urlbar {
+    min-height: var(--globle-height) !important;
+}
+
+/* 隐藏元素 */
+#navigator-toolbox #titlebar #toolbar-menubar,
+hbox.titlebar-spacer:nth-child(3),
+hbox.titlebar-spacer:nth-child(1),
+.tab-close-button,
+#tabs-newtab-button,
+#navigator-toolbox #nav-bar #nav-bar-customization-target #back-button, 
+#navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button 
+{
+    display: none !important;
+}
+
+/* 设置整个导航工具栏为弹性盒模型，反转地址栏和标签栏的位置 */
+#navigator-toolbox{
+    position: relative !important;
+    display: flex !important;
+    justify-content: start !important;
+    flex-direction: row-reverse !important;
+}
+
+/* 当窗口最大化后浏览器边框会超出顶部7px左右，因此设置导航栏 margin-top 以抵消超出的部分，使地址栏和标签栏在同一位置。*/
+#main-window[tabsintitlebar][sizemode="maximized"] > #navigator-toolbox{
+    margin-top: 7px !important;
+}
+
+#main-window[tabsintitlebar][sizemode="maximized"] > #navigator-toolbox > #titlebar,
+#main-window[tabsintitlebar][sizemode="normal"] > #navigator-toolbox > #titlebar{
+    -moz-appearance: unset !important;
+    margin-left: 1px !important;
+    flex: 1 !important;
+}
+
+/* flex设置为0后，max-width无效，因此不用设置max-width + !important，从而导致关闭标签后max-width因为!important属性而无法设置为空，进而导致标签无法关闭的bug */
+.tabbrowser-tab:-moz-lwtheme{
+    width: 150px !important;
+    -moz-box-flex: 0 !important;
+    transition: width 1s !important;
+}
+
+.tabbrowser-tab[visuallyselected="true"]{
+    width: 200px !important;
+    transition: width 0.3s !important;
+}
+
+/* 地址栏,消除一些边距 */
+#nav-bar,
+#nav-bar-customization-target,
+#urlbar-container{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 地址栏宽度动画 */
+#nav-bar > #nav-bar-customization-target > #urlbar-container{
+    width: 250px !important;
+    transition: width 800ms !important;
+}
+#nav-bar > #nav-bar-customization-target > #urlbar-container:hover{
+    width: 900px !important;
+    transition: width 800ms !important;
+}
+
+/* 书签栏 */
+#PersonalToolbar{
+    max-width: 30px !important;
+    margin-right: 1px !important;
+}
+
+menuitem.bookmark-item {
+    min-width: 20em !important;
+    max-width: 20em !important;
+}
