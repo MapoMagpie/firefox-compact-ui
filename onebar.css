@@ -63,13 +63,13 @@ hbox.titlebar-spacer:nth-child(1),
 }
 
 /* 地址栏宽度动画 */
-#nav-bar > #nav-bar-customization-target > #urlbar-container{
+#nav-bar > #nav-bar-customization-target{
     width: 250px !important;
-    transition: width 800ms !important;
+    transition: width 400ms !important;
 }
-#nav-bar > #nav-bar-customization-target > #urlbar-container:hover{
-    width: 900px !important;
-    transition: width 800ms !important;
+#nav-bar > #nav-bar-customization-target:hover:focus-within{
+    width: 600px !important;
+    transition: width 400ms !important;
 }
 
 /* 书签栏 */
