@@ -24,19 +24,14 @@ hbox.titlebar-spacer:nth-child(1),
 
 /* 设置整个导航工具栏为弹性盒模型，反转地址栏和标签栏的位置 */
 #navigator-toolbox{
-    position: relative !important;
+    /* position: relative !important; */
     display: flex !important;
     justify-content: start !important;
     flex-direction: row-reverse !important;
 }
 
-/* 当窗口最大化后浏览器边框会超出顶部7px左右，因此设置导航栏 margin-top 以抵消超出的部分，使地址栏和标签栏在同一位置。*/
-#main-window[tabsintitlebar][sizemode="maximized"] > #navigator-toolbox{
-    margin-top: 7px !important;
-}
-
-#main-window[tabsintitlebar][sizemode="maximized"] > #navigator-toolbox > #titlebar,
-#main-window[tabsintitlebar][sizemode="normal"] > #navigator-toolbox > #titlebar{
+#navigator-toolbox > #titlebar
+{
     -moz-appearance: unset !important;
     margin-left: 1px !important;
     flex: 1 !important;
@@ -44,7 +39,7 @@ hbox.titlebar-spacer:nth-child(1),
 
 /* flex设置为0后，max-width无效，因此不用设置max-width + !important，从而导致关闭标签后max-width因为!important属性而无法设置为空，进而导致标签无法关闭的bug */
 .tabbrowser-tab:-moz-lwtheme{
-    width: 150px !important;
+    width: 100px !important;
     -moz-box-flex: 0 !important;
     transition: width 1s !important;
 }
@@ -81,4 +76,10 @@ hbox.titlebar-spacer:nth-child(1),
 menuitem.bookmark-item {
     min-width: 20em !important;
     max-width: 20em !important;
+}
+
+/* 修复全屏顶部元素溢出屏幕上面 */
+:root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox 
+{
+    padding-top: 7px !important;
 }
