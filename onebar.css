@@ -1,5 +1,7 @@
-:root{
-    --globle-height: 33px !important
+:root {
+    --globle-height: 33px !important;
+    --url-container-width: 250px !important;
+    --url-container-max-width: 600px !important;
 }
 
 :root[uidensity="compact"] {
@@ -17,13 +19,16 @@ hbox.titlebar-spacer:nth-child(1),
 .tab-close-button,
 #tabs-newtab-button,
 #navigator-toolbox #nav-bar #nav-bar-customization-target #back-button, 
-#navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button 
+#navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button,
+/* 搜索 */#identity-box,
+/* 安全图标 */#tracking-protection-icon-container,
+/* 地址栏背景元素 */#urlbar.megabar > #urlbar-background
 {
     display: none !important;
 }
 
 /* 设置整个导航工具栏为弹性盒模型，反转地址栏和标签栏的位置 */
-#navigator-toolbox{
+#navigator-toolbox {
     /* position: relative !important; */
     display: flex !important;
     justify-content: start !important;
@@ -38,37 +43,51 @@ hbox.titlebar-spacer:nth-child(1),
 }
 
 /* flex设置为0后，max-width无效，因此不用设置max-width + !important，从而导致关闭标签后max-width因为!important属性而无法设置为空，进而导致标签无法关闭的bug */
-.tabbrowser-tab:-moz-lwtheme{
+.tabbrowser-tab:-moz-lwtheme {
     width: 100px !important;
     -moz-box-flex: 0 !important;
-    transition: width 1s !important;
+    /* transition: width 1s !important; */
 }
 
-.tabbrowser-tab[visuallyselected="true"]{
+.tabbrowser-tab[visuallyselected="true"] {
     width: 200px !important;
-    transition: width 0.3s !important;
+    /* transition: width 0.3s !important; */
 }
 
 /* 地址栏,消除一些边距 */
 #nav-bar,
 #nav-bar-customization-target,
-#urlbar-container{
-    margin: 0 !important;
-    padding: 0 !important;
+#urlbar-container {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+#urlbar-container {
+    min-width: var(--url-container-width) !important;
 }
 
 /* 地址栏宽度动画 */
-#nav-bar > #nav-bar-customization-target{
-    width: 250px !important;
+#nav-bar > #nav-bar-customization-target > #urlbar-container {
+    width: var(--url-container-width) !important;
     transition: width 400ms !important;
 }
-#nav-bar > #nav-bar-customization-target:hover:focus-within{
-    width: 600px !important;
+#nav-bar > #nav-bar-customization-target > #urlbar-container:hover:focus-within {
+    width: var(--url-container-max-width) !important;
     transition: width 400ms !important;
 }
 
+
+#urlbar[breakout]:hover > vbox.urlbarView {
+    display: block !important;
+}
+
+#urlbar > vbox.urlbarView {
+    background-color: #37363ac9 !important;
+    display: none !important;
+}
+
 /* 书签栏 */
-#PersonalToolbar{
+#PersonalToolbar {
     max-width: 30px !important;
     margin-right: 1px !important;
 }
@@ -76,6 +95,10 @@ hbox.titlebar-spacer:nth-child(1),
 menuitem.bookmark-item {
     min-width: 20em !important;
     max-width: 20em !important;
+}
+
+#PlacesChevron {
+    list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
 }
 
 /* 修复全屏顶部元素溢出屏幕上面 */
