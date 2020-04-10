@@ -1,7 +1,9 @@
 :root {
     --globle-height: 33px !important;
-    --url-container-width: 250px !important;
-    --url-container-max-width: 600px !important;
+/* 地址栏最小宽度 */    --url-container-width: 250px !important;
+/* 地址栏最大宽度 */    --url-container-max-width: 600px !important;
+/* 标签页非选中宽度 */    --tab-min-width-c: 100px !important;
+/* 标签页选中宽度 */    --tab-max-width-c: 200px !important;
 }
 
 :root[uidensity="compact"] {
@@ -20,37 +22,41 @@ hbox.titlebar-spacer:nth-child(1),
 #tabs-newtab-button,
 #navigator-toolbox #nav-bar #nav-bar-customization-target #back-button, 
 #navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button,
-/* 搜索 */#identity-box,
-/* 安全图标 */#tracking-protection-icon-container,
+/* 地址栏搜索图标 */#identity-box,
+/* 地址栏安全图标 */#tracking-protection-icon-container,
 /* 地址栏背景元素 */#urlbar.megabar > #urlbar-background
 {
     display: none !important;
 }
 
 /* 设置整个导航工具栏为弹性盒模型，反转地址栏和标签栏的位置 */
-#navigator-toolbox {
+#navigator-toolbox 
+{
     /* position: relative !important; */
     display: flex !important;
     justify-content: start !important;
     flex-direction: row-reverse !important;
 }
 
-#navigator-toolbox > #titlebar
+#navigator-toolbox > #titlebar 
 {
     -moz-appearance: unset !important;
     margin-left: 1px !important;
     flex: 1 !important;
 }
 
-/* flex设置为0后，max-width无效，因此不用设置max-width + !important，从而导致关闭标签后max-width因为!important属性而无法设置为空，进而导致标签无法关闭的bug */
+/* flex设置为0后，max-width无效，因此不用设置max-width + !important，
+    从而导致关闭标签后max-width因为!important属性而无法设置为空，进而导致标签无法关闭的bug */
 .tabbrowser-tab:-moz-lwtheme {
-    width: 100px !important;
+    width: var(--tab-min-width-c) !important;
     -moz-box-flex: 0 !important;
+    /* 动画效果，可能造成地址栏卡死BUG */
     /* transition: width 1s !important; */
 }
 
 .tabbrowser-tab[visuallyselected="true"] {
-    width: 200px !important;
+    width: var(--tab-max-width-c) !important;
+    /* 动画效果，可能造成地址栏卡死BUG */
     /* transition: width 0.3s !important; */
 }
 
@@ -61,6 +67,7 @@ hbox.titlebar-spacer:nth-child(1),
     margin: 0px !important;
     padding: 0px !important;
 }
+
 
 #urlbar-container {
     min-width: var(--url-container-width) !important;
@@ -92,15 +99,18 @@ hbox.titlebar-spacer:nth-child(1),
     margin-right: 1px !important;
 }
 
+/* 书签列表中的元素长宽 */
 menuitem.bookmark-item {
     min-width: 20em !important;
     max-width: 20em !important;
 }
 
+/* 修改书签组图标 */
 #PlacesChevron {
     list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
 }
 
+/* 全屏后，浏览器上部会在屏幕范围外面多出大约7px的空间，导致地址栏超出屏幕外 */
 /* 修复全屏顶部元素溢出屏幕上面 */
 :root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox 
 {
