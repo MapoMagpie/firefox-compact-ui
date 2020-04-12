@@ -1,9 +1,7 @@
 :root {
     --globle-height: 33px !important;
-/* 地址栏最小宽度 */    --url-container-width: 250px !important;
-/* 地址栏最大宽度 */    --url-container-max-width: 600px !important;
-/* 标签页非选中宽度 */    --tab-min-width-c: 100px !important;
-/* 标签页选中宽度 */    --tab-max-width-c: 200px !important;
+/* 地址栏宽度 */    --url-container-max-width: 600px !important;
+/* 标签页宽度 */    --tab-max-width-c: 170px !important;
 }
 
 :root[uidensity="compact"] {
@@ -18,7 +16,7 @@
 /* 忘记是什么了 */#navigator-toolbox #titlebar #toolbar-menubar, 
 hbox.titlebar-spacer:nth-child(3),
 hbox.titlebar-spacer:nth-child(1),
-/* 标签页关闭按钮 */.tab-close-button,
+/* 标签页关闭按钮 .tab-close-button,*/
 /* 新建标签页按钮 */#tabs-newtab-button,
 /* 地址栏前进按钮 */ #navigator-toolbox #nav-bar #nav-bar-customization-target #back-button,
 /* 地址栏后退按钮 */#navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button,
@@ -32,7 +30,6 @@ hbox.titlebar-spacer:nth-child(1),
 /* 设置整个导航工具栏为弹性盒模型，反转地址栏和标签栏的位置 */
 #navigator-toolbox 
 {
-    /* position: relative !important; */
     display: flex !important;
     justify-content: start !important;
     flex-direction: row-reverse !important;
@@ -49,12 +46,8 @@ hbox.titlebar-spacer:nth-child(1),
 /* flex设置为0后，max-width无效，因此不用设置max-width + !important，
     从而导致关闭标签后max-width因为!important属性而无法设置为空，进而导致标签无法关闭的bug */
 .tabbrowser-tab:-moz-lwtheme {
-    width: var(--tab-min-width-c) !important;
-    -moz-box-flex: 0 !important;
-}
-
-.tabbrowser-tab[visuallyselected="true"] {
     width: var(--tab-max-width-c) !important;
+    -moz-box-flex: 0 !important;
 }
 
 /* 地址栏,消除一些边距 */
@@ -65,21 +58,9 @@ hbox.titlebar-spacer:nth-child(1),
     padding: 0px !important;
 }
 
-
 #urlbar-container {
-    min-width: var(--url-container-width) !important;
+    max-width: var(--url-container-max-width) !important;
 }
-
-/* 地址栏宽度动画 */
-#nav-bar > #nav-bar-customization-target > #urlbar-container {
-    width: var(--url-container-width) !important;
-    transition: width 400ms !important;
-}
-#nav-bar > #nav-bar-customization-target > #urlbar-container:hover:focus-within {
-    width: var(--url-container-max-width) !important;
-    transition: width 400ms !important;
-}
-
 
 #urlbar[breakout]:hover > vbox.urlbarView {
     display: block !important;
@@ -92,8 +73,7 @@ hbox.titlebar-spacer:nth-child(1),
 
 /* 书签栏 */
 #PersonalToolbar {
-    max-width: 30px !important;
-    margin-right: 1px !important;
+    width: 100% !important;
 }
 
 /* 书签列表中的元素长宽 */
