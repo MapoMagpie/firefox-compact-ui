@@ -24,7 +24,7 @@ hbox.titlebar-spacer:nth-child(1),
 /* 地址栏后退按钮 */#navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button,
 /* 地址栏搜索图标 */#identity-box,
 /* 地址栏安全图标 */#tracking-protection-icon-container,
-/* 地址栏背景元素 */#urlbar.megabar > #urlbar-background
+/* 地址栏背景元素 */#urlbar-background
 {
     display: none !important;
 }
