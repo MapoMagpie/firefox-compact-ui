@@ -1,21 +1,26 @@
 :root {
-    --globle-height: 33px !important;
-/* 地址栏最小宽度 */    --url-container-width: 250px !important;
-/* 地址栏最大宽度 */    --url-container-max-width: 600px !important;
-/* 标签页非选中宽度 */    --tab-min-width-c: 100px !important;
-/* 标签页选中宽度 */    --tab-max-width-c: 200px !important;
+  --globle-height: 28px !important;
+  /* 地址栏最小宽度 */
+  --url-container-width: 250px !important;
+  /* 地址栏最大宽度 */
+  --url-container-max-width: 600px !important;
+  /* 标签页非选中宽度 */
+  --tab-min-width-c: 100px !important;
+  /* 标签页选中宽度 */
+  --tab-max-width-c: 200px !important;
 }
 
 :root[uidensity="compact"] {
-    --tab-min-height: var(--globle-height) !important;
+  --tab-min-height: var(--globle-height) !important;
 }
 
 :root[uidensity="compact"] #urlbar {
-    min-height: var(--globle-height) !important;
+  min-height: var(--globle-height) !important;
 }
 
 /* 隐藏元素 */
-/* 忘记是什么了 */#navigator-toolbox #titlebar #toolbar-menubar, 
+/* 忘记是什么了 */
+#navigator-toolbox #titlebar #toolbar-menubar, 
 hbox.titlebar-spacer:nth-child(3),
 hbox.titlebar-spacer:nth-child(1),
 /* 标签页关闭按钮 */.tab-close-button,
@@ -24,92 +29,89 @@ hbox.titlebar-spacer:nth-child(1),
 /* 地址栏后退按钮 */#navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button,
 /* 地址栏搜索图标 */#identity-box,
 /* 地址栏安全图标 */#tracking-protection-icon-container,
-/* 地址栏背景元素 */#urlbar-background
-{
-    display: none !important;
+/* 地址栏背景元素 */#urlbar-background {
+  display: none !important;
 }
 
 /* 设置整个导航工具栏为弹性盒模型，反转地址栏和标签栏的位置 */
-#navigator-toolbox 
-{
-    /* position: relative !important; */
-    display: flex !important;
-    justify-content: start !important;
-    flex-direction: row-reverse !important;
-    flex-wrap: wrap !important;
+#navigator-toolbox {
+  /* position: relative !important; */
+  display: flex !important;
+  justify-content: start !important;
+  flex-direction: row-reverse !important;
+  flex-wrap: wrap !important;
 }
 
-#navigator-toolbox > #titlebar 
-{
-    -moz-appearance: unset !important;
-    margin-left: 1px !important;
-    flex: 1 !important;
+#navigator-toolbox > #titlebar {
+  -moz-appearance: unset !important;
+  margin-left: 1px !important;
+  flex: 1 !important;
 }
 
 /* flex设置为0后，max-width无效，因此不用设置max-width + !important，
     从而导致关闭标签后max-width因为!important属性而无法设置为空，进而导致标签无法关闭的bug */
 .tabbrowser-tab:-moz-lwtheme {
-    width: var(--tab-min-width-c) !important;
-    -moz-box-flex: 0 !important;
+  width: var(--tab-min-width-c) !important;
+  -moz-box-flex: 0 !important;
 }
 
 .tabbrowser-tab[visuallyselected="true"] {
-    width: var(--tab-max-width-c) !important;
+  width: var(--tab-max-width-c) !important;
 }
 
 /* 地址栏,消除一些边距 */
 #nav-bar,
 #nav-bar-customization-target,
 #urlbar-container {
-    margin: 0px !important;
-    padding: 0px !important;
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
-
 #urlbar-container {
-    min-width: var(--url-container-width) !important;
+  min-width: var(--url-container-width) !important;
+  /* --urlbar-container-height: 30px !important; */
 }
 
 /* 地址栏宽度动画 */
 #nav-bar > #nav-bar-customization-target > #urlbar-container {
-    width: var(--url-container-width) !important;
-    transition: width 400ms !important;
+  width: var(--url-container-width) !important;
+  transition: width 400ms !important;
 }
-#nav-bar > #nav-bar-customization-target > #urlbar-container:hover:focus-within {
-    width: var(--url-container-max-width) !important;
-    transition: width 400ms !important;
+#nav-bar
+  > #nav-bar-customization-target
+  > #urlbar-container:hover:focus-within {
+  width: var(--url-container-max-width) !important;
+  transition: width 400ms !important;
 }
-
 
 #urlbar[breakout]:hover > vbox.urlbarView {
-    display: block !important;
+  display: block !important;
 }
 
 #urlbar > vbox.urlbarView {
-    background-color: #37363ac9 !important;
-    display: none !important;
+  background-color: #37363ac9 !important;
+  display: none !important;
 }
 
 /* 书签栏 */
 #PersonalToolbar {
-    max-width: 30px !important;
-    margin-right: 1px !important;
+  max-width: 30px !important;
+  margin-right: 1px !important;
 }
 
 /* 书签列表中的元素长宽 */
 menuitem.bookmark-item {
-    min-width: 20em !important;
-    max-width: 20em !important;
+  min-width: 20em !important;
+  max-width: 20em !important;
 }
 
 /* 修改书签组图标 */
 #PlacesChevron {
-    list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
+  list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
 }
 
 /* 全屏后，浏览器上部会在屏幕范围外面多出大约7px的空间，导致地址栏超出屏幕外 */
 /* 修复全屏顶部元素溢出屏幕上面 */
-:root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox 
-{
-    padding-top: 7px !important;
+:root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox {
+  padding-top: 7px !important;
 }
