@@ -4,10 +4,14 @@
   --url-container-width: 250px !important;
   /* 地址栏最大宽度 */
   --url-container-max-width: 600px !important;
+  --url-container-max-height: 28px !important;
+  --urlbar-min-height: 28px !important;
   /* 标签页非选中宽度 */
   --tab-min-width-c: 100px !important;
   /* 标签页选中宽度 */
   --tab-max-width-c: 200px !important;
+  --tab-min-height: 26px !important;
+  --tab-max-height: 26px !important;
 }
 
 :root[uidensity="compact"] {
@@ -46,6 +50,7 @@ hbox.titlebar-spacer:nth-child(1),
   -moz-appearance: unset !important;
   margin-left: 1px !important;
   flex: 1 !important;
+  height: var(--globle-height) !important;
 }
 
 /* flex设置为0后，max-width无效，因此不用设置max-width + !important，
@@ -59,17 +64,30 @@ hbox.titlebar-spacer:nth-child(1),
   width: var(--tab-max-width-c) !important;
 }
 
+.tab-background {
+  height: 28px !important;
+  border-radius: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.tab-content {
+  padding: 0 5px !important;
+  height: 28px !important;
+}
+
 /* 地址栏,消除一些边距 */
 #nav-bar,
 #nav-bar-customization-target,
 #urlbar-container {
   margin: 0px !important;
   padding: 0px !important;
+  height: var(--globle-height) !important;
 }
 
 #urlbar-container {
   min-width: var(--url-container-width) !important;
-  /* --urlbar-container-height: 30px !important; */
+  height: var(--url-container-max-height) !important;
+  max-height: var(--url-container-max-height) !important;
 }
 
 /* 地址栏宽度动画 */
@@ -95,7 +113,9 @@ hbox.titlebar-spacer:nth-child(1),
 
 /* 书签栏 */
 #PersonalToolbar {
-  max-width: 30px !important;
+  width: 28px !important;
+  height: 28px !important;
+  padding-inline: 0 !important;
   margin-right: 1px !important;
 }
 
