@@ -132,6 +132,6 @@ menuitem.bookmark-item {
 
 /* 全屏后，浏览器上部会在屏幕范围外面多出大约7px的空间，导致地址栏超出屏幕外 */
 /* 修复全屏顶部元素溢出屏幕上面 */
-:root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox {
+/* :root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox {
   padding-top: 7px !important;
-}
+} */
