@@ -7,9 +7,9 @@
   --url-container-max-height: 28px !important;
   --urlbar-min-height: 28px !important;
   /* 标签页非选中宽度 */
-  --tab-min-width-c: 100px !important;
+  --tab-max-width-c: 120px !important;
   /* 标签页选中宽度 */
-  --tab-max-width-c: 200px !important;
+  --tab-max-width-s: 210px !important;
   --tab-min-height: 26px !important;
   --tab-max-height: 26px !important;
 }
@@ -53,15 +53,11 @@ hbox.titlebar-spacer:nth-child(1),
   height: var(--globle-height) !important;
 }
 
-/* flex设置为0后，max-width无效，因此不用设置max-width + !important，
-    从而导致关闭标签后max-width因为!important属性而无法设置为空，进而导致标签无法关闭的bug */
-.tabbrowser-tab:-moz-lwtheme {
-  width: var(--tab-min-width-c) !important;
-  -moz-box-flex: 0 !important;
+.tabbrowser-tab:is([fadein]) {
+  max-width: var(--tab-max-width-c) !important;
 }
-
-.tabbrowser-tab[visuallyselected="true"] {
-  width: var(--tab-max-width-c) !important;
+.tabbrowser-tab:is([fadein]):is([selected]) {
+  max-width: var(--tab-max-width-s) !important;
 }
 
 .tab-background {
