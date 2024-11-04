@@ -27,6 +27,7 @@
 #navigator-toolbox #titlebar #toolbar-menubar, 
 hbox.titlebar-spacer:nth-child(3),
 hbox.titlebar-spacer:nth-child(1),
+#toolbar-menubar[inactive],
 /* 标签页关闭按钮 */.tab-close-button,
 /* 新建标签页按钮 */#tabs-newtab-button,
 /* 地址栏前进按钮 */ #navigator-toolbox #nav-bar #nav-bar-customization-target #back-button,
@@ -126,8 +127,7 @@ menuitem.bookmark-item {
   list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
 }
 
-/* 全屏后，浏览器上部会在屏幕范围外面多出大约7px的空间，导致地址栏超出屏幕外 */
-/* 修复全屏顶部元素溢出屏幕上面 */
-/* :root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox {
-  padding-top: 7px !important;
+/* place navigator bar to bottom */
+/* #navigator-toolbox {
+  order: 2;
 } */
