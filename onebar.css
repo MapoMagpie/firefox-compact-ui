@@ -12,6 +12,7 @@
   --tab-max-width-s: 210px !important;
   --tab-min-height: 26px !important;
   --tab-max-height: 26px !important;
+  --tab-block-margin: 0px !important;
 }
 
 :root[uidensity="compact"] {
@@ -125,6 +126,13 @@ menuitem.bookmark-item {
 /* 修改书签组图标 */
 #PlacesChevron {
   list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
+}
+
+/* PLAYING文字位置 */
+.tab-secondary-label {
+  position: absolute !important;
+  bottom: 0px !important;
+  right: 0px !important; 
 }
 
 /* place navigator bar to bottom */

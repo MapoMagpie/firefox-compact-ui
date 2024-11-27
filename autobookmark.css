@@ -1,0 +1,24 @@
+/* 导航栏(浏览器最上层的工具栏，内部包含了所有的bar，如标签栏、地址栏、书签栏等)
+   此项设置为unset后，即可显示其内部元素使用了fixed定位且超出导航栏位置的元素。
+*/
+#navigator-toolbox {
+  z-index: unset !important;
+}
+/* 浮动书签的父元素，需要增加其z-index值 */
+#PlacesToolbar {
+  z-index: 10 !important;
+}
+/* 浮动书签 */
+#PlacesToolbarItems {
+  position: fixed !important;
+  top: var(--globle-height);
+  left: 0;
+  width: 100vw !important;
+  visibility: hidden !important;
+}
+/* 鼠标移动到导航栏(浏览器最上层的工具栏，内部包含了所有的bar，如标签栏、地址栏、书签栏等)时显示浮动书签 */
+/* 鼠标移动至浮动书签自身时，保持显示 */
+#navigator-toolbox:hover #PlacesToolbarItems, 
+#PlacesToolbarItems:hover {
+  visibility: visible !important;
+}
