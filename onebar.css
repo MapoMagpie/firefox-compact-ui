@@ -1,3 +1,4 @@
+/* this style maintained by https://github.com/MapoMagpie/firefox-compact-ui */
 :root {
   --globle-height: 28px !important;
   /* 地址栏最小宽度 */
@@ -10,31 +11,20 @@
   --tab-max-width-c: 120px !important;
   /* 标签页选中宽度 */
   --tab-max-width-s: 210px !important;
-  --tab-min-height: 26px !important;
-  --tab-max-height: 26px !important;
+  --tab-min-height: 28px !important;
+  --tab-max-height: 28px !important;
   --tab-block-margin: 0px !important;
 }
 
-:root[uidensity="compact"] {
-  --tab-min-height: var(--globle-height) !important;
-}
-
-:root[uidensity="compact"] #urlbar {
-  min-height: var(--globle-height) !important;
-}
-
 /* 隐藏元素 */
-/* 忘记是什么了 */
-#navigator-toolbox #titlebar #toolbar-menubar, 
-hbox.titlebar-spacer:nth-child(3),
-hbox.titlebar-spacer:nth-child(1),
+hbox.titlebar-spacer,
 #toolbar-menubar[inactive],
 /* 标签页关闭按钮 */.tab-close-button,
 /* 新建标签页按钮 */#tabs-newtab-button,
-/* 地址栏前进按钮 */ #navigator-toolbox #nav-bar #nav-bar-customization-target #back-button,
+/* 地址栏前进按钮 */#navigator-toolbox #nav-bar #nav-bar-customization-target #back-button,
 /* 地址栏后退按钮 */#navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button,
-/* 地址栏搜索图标 */#identity-box,
-/* 地址栏安全图标 */#tracking-protection-icon-container,
+/* 地址栏搜索图标 #urlbar-container:not(:hover) */#identity-box,
+/* 地址栏安全图标 #urlbar-container:not(:hover) */#tracking-protection-icon-container,
 /* 地址栏背景元素 */#urlbar-background {
   display: none !important;
 }
@@ -63,14 +53,14 @@ hbox.titlebar-spacer:nth-child(1),
 }
 
 .tab-background {
-  height: 28px !important;
+  height: var(--globle-height) !important;
   border-radius: 1px !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 .tab-content {
   padding: 0 5px !important;
-  height: 28px !important;
+  height: var(--globle-height) !important;
 }
 
 /* 地址栏,消除一些边距 */
@@ -82,31 +72,22 @@ hbox.titlebar-spacer:nth-child(1),
   height: var(--globle-height) !important;
 }
 
-#urlbar-container {
-  min-width: var(--url-container-width) !important;
-  height: var(--url-container-max-height) !important;
-  max-height: var(--url-container-max-height) !important;
-}
-
 /* 地址栏宽度动画 */
-#nav-bar > #nav-bar-customization-target > #urlbar-container {
+#urlbar-container {
   width: var(--url-container-width) !important;
   transition: width 400ms !important;
 }
-#nav-bar
-  > #nav-bar-customization-target
-  > #urlbar-container:hover:focus-within {
+#urlbar-container:hover:focus-within {
   width: var(--url-container-max-width) !important;
   transition: width 400ms !important;
 }
-
-#urlbar[breakout]:hover > vbox.urlbarView {
-  display: block !important;
-}
-
 #urlbar > vbox.urlbarView {
-  background-color: #37363ac9 !important;
   display: none !important;
+  background-color: #37363ac9 !important;
+}
+#urlbar-container:hover:focus-within >
+#urlbar > vbox.urlbarView {
+  display: block !important;
 }
 
 /* 书签栏 */
