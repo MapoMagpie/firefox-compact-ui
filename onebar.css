@@ -19,13 +19,15 @@
 /* 隐藏元素 */
 hbox.titlebar-spacer,
 #toolbar-menubar[inactive],
+/* 标签页 PLAYING */.tab-secondary-label,
 /* 标签页关闭按钮 */.tab-close-button,
 /* 新建标签页按钮 */#tabs-newtab-button,
 /* 地址栏前进按钮 */#navigator-toolbox #nav-bar #nav-bar-customization-target #back-button,
 /* 地址栏后退按钮 */#navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button,
 /* 地址栏搜索图标 #urlbar-container:not(:hover) */#identity-box,
 /* 地址栏安全图标 #urlbar-container:not(:hover) */#tracking-protection-icon-container,
-/* 地址栏背景元素 */#urlbar-background {
+/* 地址栏背景元素 */#urlbar-background
+{
   display: none !important;
 }
 
@@ -107,13 +109,6 @@ menuitem.bookmark-item {
 /* 修改书签组图标 */
 #PlacesChevron {
   list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
-}
-
-/* PLAYING文字位置 */
-.tab-secondary-label {
-  position: absolute !important;
-  bottom: 0px !important;
-  right: 0px !important; 
 }
 
 /* place navigator bar to bottom */
