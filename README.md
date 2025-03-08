@@ -1,6 +1,6 @@
 <h1>firefox-compact-ui</h1>
 
-![cover](.README.assets/example_01.avif)
+![cover](./README.assets/example_01.avif)
 > Combine the tab bar and url bar into one line to save user space.
 
 ## English
