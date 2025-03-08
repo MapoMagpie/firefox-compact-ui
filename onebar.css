@@ -19,14 +19,24 @@
 /* 隐藏元素 */
 hbox.titlebar-spacer,
 #toolbar-menubar[inactive],
-/* 标签页 PLAYING .tab-secondary-label,*/
-/* 标签页关闭按钮 */.tab-close-button,
-/* 新建标签页按钮 */#tabs-newtab-button,
-/* 地址栏前进按钮 */#navigator-toolbox #nav-bar #nav-bar-customization-target #back-button,
-/* 地址栏后退按钮 */#navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button,
-/* 地址栏搜索图标 #urlbar-container:not(:hover) */#identity-box,
-/* 地址栏安全图标 #urlbar-container:not(:hover) */#tracking-protection-icon-container,
-/* 地址栏背景元素 */#urlbar-background
+/* right part of urlbar buttons #page-action-buttons, */
+/* urlbar button */ #contextual-feature-recommendation,
+/* urlbar button #userContext-icons, */
+/* urlbar button */ #reader-mode-button,
+/* urlbar button */ #picture-in-picture-button,
+/* urlbar button */ #translations-button,
+/* urlbar button */ #shopping-sidebar-button,
+/* urlbar button */ /* #urlbar-zoom-button, */
+/* urlbar button */ /* #pageActionButton, */
+/* urlbar button bookmark */ #star-button-box,
+
+/* tab    button close         */ .tab-close-button,
+/* tabbar button new tab    */ #tabs-newtab-button,
+/* navigator button back    */ #navigator-toolbox #nav-bar #nav-bar-customization-target #back-button,
+/* navigator button forword */ #navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button,
+/* 地址栏搜索图标 #urlbar-container:not(:hover) */ #identity-box,
+/* 地址栏安全图标 #urlbar-container:not(:hover) */ #tracking-protection-icon-container,
+/* 地址栏背景元素 */ #urlbar-background
 {
   display: none !important;
 }
