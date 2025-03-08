@@ -19,7 +19,7 @@
 /* 隐藏元素 */
 hbox.titlebar-spacer,
 #toolbar-menubar[inactive],
-/* 标签页 PLAYING */.tab-secondary-label,
+/* 标签页 PLAYING .tab-secondary-label,*/
 /* 标签页关闭按钮 */.tab-close-button,
 /* 新建标签页按钮 */#tabs-newtab-button,
 /* 地址栏前进按钮 */#navigator-toolbox #nav-bar #nav-bar-customization-target #back-button,
@@ -111,6 +111,16 @@ menuitem.bookmark-item {
   list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
 }
 
+@-moz-document url-prefix(chrome://browser/content/browser.xhtml) {
+  #tabbrowser-tabs:is([orient="vertical"][expanded], [orient="horizontal"]) .tabbrowser-tab:not([pinned]):not([crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+    .tab-content .tab-icon-image {
+      display: none;
+    }
+    .tab-audio-button {
+      margin-top: -4px;
+    }
+  }
+}
 /* place navigator bar to bottom */
 /* #navigator-toolbox {
   order: 2;
