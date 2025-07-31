@@ -75,6 +75,10 @@ hbox.titlebar-spacer,
   height: var(--globle-height) !important;
 }
 
+#pinned-tabs-container[orient="horizontal"] {
+  margin-inline-end: 0px !important;
+}
+
 /* 地址栏,消除一些边距 */
 #nav-bar,
 #nav-bar-customization-target,
