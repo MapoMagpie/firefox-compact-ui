@@ -1,22 +1,25 @@
 /* this style maintained by https://github.com/MapoMagpie/firefox-compact-ui */
 :root {
   --globle-height: 28px !important;
-  /* 地址栏最小宽度 */
+  /* Address bar minimum width */
   --url-container-width: 250px !important;
-  /* 地址栏最大宽度 */
+  /* Address bar maximum width */
   --url-container-max-width: 600px !important;
   --url-container-max-height: 28px !important;
   --urlbar-min-height: 28px !important;
-  /* 标签页非选中宽度 */
+  --border-radius-medium: 5px !important;
+  --border-radius-xlarge: 5px !important;
+  /* Unselected tab (non-current tab) width */
   --tab-max-width-c: 120px !important;
-  /* 标签页选中宽度 */
+  /* Selected tab (current tab) width */
   --tab-max-width-s: 210px !important;
   --tab-min-height: 28px !important;
   --tab-max-height: 28px !important;
   --tab-block-margin: 0px !important;
+  --tab-margin-block: 0px !important;
 }
 
-/* 隐藏元素 */
+/* hidden some elements */
 hbox.titlebar-spacer,
 #toolbar-menubar[inactive],
 /* urlbar search selector */ .searchmode-switcher.chromeclass-toolbar-additional, 
@@ -35,16 +38,17 @@ hbox.titlebar-spacer,
 /* tabbar button new tab    */ #tabs-newtab-button,
 /* navigator button back    */ #navigator-toolbox #nav-bar #nav-bar-customization-target #back-button,
 /* navigator button forword */ #navigator-toolbox #nav-bar #nav-bar-customization-target #forward-button,
-/* 地址栏搜索图标 #urlbar-container:not(:hover) */ #identity-box,
-/* 地址栏安全图标 #urlbar-container:not(:hover) */ /* #tracking-protection-icon-container, */
-/* 地址栏背景元素 */ #urlbar-background
+/* Address bar security icon #urlbar-container:not(:hover) #tracking-protection-icon-container, */
+/* Address bar search icon #urlbar-container:not(:hover) */ #identity-box
 {
   display: none !important;
 }
 
-/* 设置整个导航工具栏为弹性盒模型，反转地址栏和标签栏的位置 */
+/*
+Core: merge the entire navigation toolbar into a single bar.
+       Set it as a flexbox and reverse the positions of the address bar and tab bar.
+*/
 #navigator-toolbox {
-  /* position: relative !important; */
   display: flex !important;
   justify-content: start !important;
   flex-direction: row-reverse !important;
@@ -58,16 +62,18 @@ hbox.titlebar-spacer,
   height: var(--globle-height) !important;
 }
 
+/* Unselected tab (non-current tab) width */
 .tabbrowser-tab:is([fadein]) {
   max-width: var(--tab-max-width-c) !important;
 }
+/* Selected tab (current tab) width */
 .tabbrowser-tab:is([fadein]):is([selected]) {
   max-width: var(--tab-max-width-s) !important;
 }
 
 .tab-background {
   height: var(--globle-height) !important;
-  border-radius: 1px !important;
+  border-radius: 10px !important;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -80,7 +86,7 @@ hbox.titlebar-spacer,
   margin-inline-end: 0px !important;
 }
 
-/* 地址栏,消除一些边距 */
+/* Address bar: remove some margins */
 #nav-bar,
 #nav-bar-customization-target,
 #urlbar-container {
@@ -89,7 +95,16 @@ hbox.titlebar-spacer,
   height: var(--globle-height) !important;
 }
 
-/* 地址栏宽度动画 */
+/* Address bar (including the popup urlbarView) background, so when the address bar is not focused its height is limited to 2px less than the global height */
+#urlbar-container #urlbar > .urlbar-background {
+  height: calc(var(--globle-height) - 2px) !important;
+}
+/* When the address bar is focused, remove the background height limit */
+#urlbar-container:focus-within:hover #urlbar > .urlbar-background {
+  height: unset !important;
+}
+
+/* Address bar expand animation */
 #urlbar-container {
   width: var(--url-container-width) !important;
   transition: width 400ms !important;
@@ -98,30 +113,35 @@ hbox.titlebar-spacer,
   width: var(--url-container-max-width) !important;
   transition: width 400ms !important;
 }
-#urlbar > vbox.urlbarView {
+
+/* urlbarView is the popup shown on focus, displaying shortcuts, search suggestions, history, etc. */
+/* Hide urlbarView unless the mouse is hovering over the address bar */
+#urlbar > .urlbarView {
   display: none !important;
-  background-color: #37363ac9 !important;
 }
-#urlbar-container:focus-within >
-#urlbar > vbox.urlbarView {
+#urlbar-container:focus-within:hover > #urlbar > .urlbarView {
   display: block !important;
 }
 
-/* 书签栏 */
+#browser {
+  padding-block-start: 0px !important;
+}
+
+/* Show more bookmarks button */
 #PersonalToolbar {
   max-width: 30px;
   height: 28px;
   padding-inline: 0 !important;
-  margin-right: 1px !important;
 }
 
-/* 书签列表中的元素长宽 */
+/* change "Show more bookmarks button icon "*/
+#PlacesChevron {
+  list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
+}
+
+/* limit bookmark item width */
 menuitem.bookmark-item {
   min-width: 20em !important;
   max-width: 20em !important;
 }
 
-/* 修改书签组图标 */
-#PlacesChevron {
-  list-style-image: url("chrome://browser/skin/bookmark.svg") !important;
-}
