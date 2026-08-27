@@ -73,7 +73,7 @@ Core: merge the entire navigation toolbar into a single bar.
 
 .tab-background {
   height: var(--globle-height) !important;
-  border-radius: 10px !important;
+  border-radius: 5px !important;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -95,32 +95,36 @@ Core: merge the entire navigation toolbar into a single bar.
   height: var(--globle-height) !important;
 }
 
-/* Address bar (including the popup urlbarView) background, so when the address bar is not focused its height is limited to 2px less than the global height */
-#urlbar-container #urlbar > .urlbar-background {
-  height: calc(var(--globle-height) - 2px) !important;
-}
-/* When the address bar is focused, remove the background height limit */
-#urlbar-container:focus-within:hover #urlbar > .urlbar-background {
-  height: unset !important;
-}
-
 /* Address bar expand animation */
 #urlbar-container {
   width: var(--url-container-width) !important;
   transition: width 400ms !important;
 }
-#urlbar-container:focus-within:hover {
+
+#urlbar-container:hover:focus-within {
   width: var(--url-container-max-width) !important;
   transition: width 400ms !important;
+}
+
+/* Address bar (including the popup urlbarView) background, so when the address bar is not focused its height is limited to 2px less than the global height */
+#urlbar-container > .urlbar > .urlbar-background {
+    display: none !important;
 }
 
 /* urlbarView is the popup shown on focus, displaying shortcuts, search suggestions, history, etc. */
 /* Hide urlbarView unless the mouse is hovering over the address bar */
 #urlbar > .urlbarView {
   display: none !important;
+  margin: 0px !important;
 }
+
 #urlbar-container:focus-within:hover > #urlbar > .urlbarView {
   display: block !important;
+  margin-top: 4px !important;
+  background-color: var(--urlbar-background-color) !important;
+  background-clip: border-box;
+  border-radius: var(--urlbar-background-border-radius);
+  border: var(--urlbar-background-border);
 }
 
 #browser {
