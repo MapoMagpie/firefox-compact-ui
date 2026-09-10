@@ -101,7 +101,7 @@ Core: merge the entire navigation toolbar into a single bar.
   transition: width 400ms !important;
 }
 
-#urlbar-container:hover:focus-within {
+#urlbar-container:hover:has(#urlbar[open]) {
   width: var(--url-container-max-width) !important;
   transition: width 400ms !important;
 }
@@ -118,7 +118,7 @@ Core: merge the entire navigation toolbar into a single bar.
   margin: 0px !important;
 }
 
-#urlbar-container:focus-within:hover > #urlbar > .urlbarView {
+#urlbar-container:hover > #urlbar[open] > .urlbarView {
   display: block !important;
   margin-top: 4px !important;
   background-color: var(--urlbar-background-color) !important;
